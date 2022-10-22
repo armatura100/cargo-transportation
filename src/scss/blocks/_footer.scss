@@ -1,0 +1,60 @@
+@use '../global/vars' as *;
+
+.footer {
+    &__map {
+        iframe {
+            width: 100%;
+            height: rem(450);
+            display: block;
+        }
+    }
+
+    &__content {
+        font-size: rem(14);
+        background-color: $accent;
+    }
+
+    &__content-inner {
+        padding-block: clamp(1.875rem, 1.307rem + 2.84vw, 3.438rem);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(20) rem(10);
+
+        @media (max-width: rem(800)) {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    &__address {
+        max-width: rem(300);
+        margin-bottom: rem(6);
+    }
+
+    &__email {
+        color: $dark;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__phones {
+        display: grid;
+        row-gap: rem(6);
+    }
+
+    &__phone {
+        white-space: nowrap;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__author {
+        color: $dark;
+        text-decoration: underline;
+    }
+}

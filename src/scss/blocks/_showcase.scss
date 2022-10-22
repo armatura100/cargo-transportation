@@ -1,0 +1,140 @@
+@use '../global/vars' as *;
+
+.showcase {
+    padding-block: clamp(4.375rem, 3.239rem + 5.68vw, 7.5rem);
+    background-color: #393F47;
+    position: relative;
+
+    &::after {
+        content: '';
+        height: 100%;
+        width: rem(410);
+        background-color: $dark;
+        pointer-events: none;
+
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__slider {
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            font-weight: 500;
+            color: $accent;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            column-gap: rem(30);
+            position: absolute;
+            right: 0;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .swiper-button-prev {
+            bottom: 0;
+        }
+
+        .swiper-button-next {
+            top: 0;
+        }
+    }
+
+    &__slide {
+        display: flex;
+        align-items: center;
+        column-gap: clamp(0rem, -17.5rem + 35vw, 8.75rem);
+    }
+
+    &__slide-content {
+        max-width: rem(390);
+        z-index: 1;
+    }
+
+    &__title {
+        @extend %title;
+        margin-bottom: rem(17);
+    }
+
+    &__text {
+        font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+        line-height: 1.5;
+        margin-bottom: rem(38);
+    }
+
+    &__link {
+        font-weight: 500;
+        font-size: rem(16);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: rem(16) rem(54);
+        background-color: $accent;
+        display: inline-block;
+        border: rem(1) solid transparent;
+        transition: .3s;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: transparent;
+                color: $accent;
+                border-color: $accent;
+            }
+        }
+    }
+}
+
+@media (max-width: rem(800)) {
+    .showcase {
+        &__slider {
+            .swiper-buttons {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                display: flex;
+                column-gap: rem(20);
+
+                span {
+                    display: none;
+                }
+            }
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                position: static;
+            }
+        }
+    }
+}
+
+@media (max-width: rem(600)) {
+    .showcase {
+        background-color: $dark;
+
+        &::after {
+            display: none;
+        }
+
+        .swiper-wrapper {
+            max-width: 100%;
+        }
+
+        &__slide {
+            flex-direction: column;
+        }
+
+        &__slide-content {
+            max-width: 100%;
+        }
+
+        &__slide-image {
+            margin-left: auto;
+            margin-top: rem(-200);
+            z-index: -1;
+            filter: opacity(.5);
+        }
+    }
+}

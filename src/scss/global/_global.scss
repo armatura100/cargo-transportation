@@ -1,0 +1,29 @@
+@use 'vars' as *;
+
+:root {
+    --header-pad: rem(145);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.4;
+    font-weight: 400;
+    background-color: $dark;
+    color: $white;
+
+    &::before {
+        content: '';
+        height: var(--header-pad);
+        display: block;
+        transition: height .6s;
+    }
+
+    &.lock {
+        overflow: hidden;
+    }
+}
+
+.container {
+    width: min(rem(1110), 100% - rem(20));
+    margin-inline: auto;
+}

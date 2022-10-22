@@ -1,0 +1,68 @@
+@use '../global/vars' as *;
+
+.services {
+    margin-top: clamp(4.375rem, 2.557rem + 9.09vw, 9.375rem);
+    margin-bottom: clamp(1.875rem, 0.852rem + 5.11vw, 4.688rem);
+
+    &__title {
+        @extend %title;
+        margin-bottom: clamp(1.875rem, 1.193rem + 3.41vw, 3.75rem);
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(rem(230), 1fr));
+    }
+
+    &__item {
+        display: grid;
+        row-gap: rem(23);
+
+        text-align: center;
+        padding: rem(35) rem(20);
+        transition: background-color .3s;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: $accent;
+
+                .services__item-img {
+                    background-color: $white;
+
+                    svg path {
+                        fill: $dark;
+                    }
+                }
+            }
+        }
+
+        @media (max-width: rem(800)) {
+            padding: rem(20);
+        }
+
+        @media (max-width: rem(600)) {
+            row-gap: rem(10);
+        }
+    }
+
+    &__item-img {
+        width: rem(70);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+        margin-inline: auto;
+        transition: background-color .3s;
+
+        svg path {
+            transition: fill .3s;
+        }
+    }
+
+    &__item-text {
+        font-weight: 700;
+        font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+}
