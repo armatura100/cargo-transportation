@@ -66,6 +66,11 @@
         margin-bottom: rem(38);
     }
 
+    &__link-wrapper {
+        display: inline-block;
+        padding-bottom: rem(1);
+    }
+
     &__link {
         font-weight: 500;
         font-size: rem(16);
