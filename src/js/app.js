@@ -99,7 +99,7 @@ menuLinks.forEach(link => {
 const headerLocation = document.querySelector('.header__location-link');
 const appendedListItem = `
 <li class="menu__item">
-    <a class="menu__link">
+    <a class="menu__link" href="${headerLocation.getAttribute('href')}">
         ${headerLocation.innerText}
     </a>
 </li>
