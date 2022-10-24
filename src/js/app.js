@@ -25,6 +25,7 @@ function changeLanguage() {
             location.reload();
         }
 
+        document.documentElement.lang = hash;
         document.querySelector('title').innerText = langsArr.pageTitle[hash];
         for (let key in langsArr) {
             const elements = document.querySelectorAll(`[data-lang-${key}]`);
