@@ -53,6 +53,15 @@
     &__slide-content {
         max-width: rem(390);
         z-index: 1;
+
+        &.animated {
+
+            .showcase__text,
+            .showcase__link {
+                transform: none;
+                opacity: 1;
+            }
+        }
     }
 
     &__title {
@@ -64,11 +73,10 @@
         font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
         line-height: 1.5;
         margin-bottom: rem(38);
-    }
 
-    &__link-wrapper {
-        display: inline-block;
-        padding-bottom: rem(10);
+        transform: translateY(100px);
+        opacity: 1;
+        transition: transform .8s, opacity .8s;
     }
 
     &__link {
@@ -76,11 +84,20 @@
         font-size: rem(16);
         letter-spacing: 0.1em;
         text-transform: uppercase;
+
+        display: inline-block;
         padding: rem(16) rem(54);
         background-color: $accent;
-        display: inline-block;
         border: rem(1) solid transparent;
-        transition: .3s;
+        margin-bottom: rem(2);
+
+        transform: translateY(100px);
+        opacity: 0;
+        transition: transform .8s 150ms,
+            opacity .8s 150ms,
+            background-color .3s,
+            border-color .3s,
+            color .3s;
 
         @media (any-hover: hover) {
             &:hover {
@@ -88,6 +105,17 @@
                 color: $accent;
                 border-color: $accent;
             }
+        }
+    }
+
+    &__slide-image {
+        transform: translateX(100px);
+        opacity: 0;
+        transition: transform .8s, opacity .8s;
+
+        &.animated {
+            transform: none;
+            opacity: 1;
         }
     }
 }

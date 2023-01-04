@@ -12,15 +12,31 @@
     &__items {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(rem(230), 1fr));
+
+        &.animated {
+            .services__item {
+                @for $i from 0 to 8 {
+                    &:nth-child(#{$i + 1}) {
+                        transition: transform .8s #{$i * 50ms},
+                        opacity .8s #{$i * 50ms},
+                        background-color .3s;
+                    }
+                }
+
+                transform: none;
+                opacity: 1;
+            }
+        }
     }
 
     &__item {
         display: grid;
         row-gap: rem(23);
-
         text-align: center;
         padding: rem(35) rem(20);
-        transition: background-color .3s;
+
+        transform: translateY(100px);
+        opacity: 0;
 
         @media (any-hover: hover) {
             &:hover {

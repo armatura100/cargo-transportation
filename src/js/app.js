@@ -99,19 +99,24 @@ menuLinks.forEach(link => {
 // append header items that don't fit into header to the burger menu
 const headerLocation = document.querySelector('.header__location-link');
 const appendedListItem = `
-<li class="menu__item">
-    <a class="menu__link" href="${headerLocation.getAttribute('href')}">
-        ${headerLocation.innerText}
-    </a>
-</li>
-`
+    <li class="menu__item">
+        <a class="menu__link" href="${headerLocation.getAttribute('href')}">
+            ${headerLocation.innerText}
+        </a>
+    </li>
+`;
 if (window.matchMedia('(max-width: 26.25rem)').matches) {
     menuList.insertAdjacentHTML('beforeend', appendedListItem);
 }
 
-// animation library
-import aos from 'aos';
-aos.init({
-    once: true,
-    duration: 800,
-});
+// animate on scroll
+const animatableItems = document.querySelectorAll('[data-animatable]');
+const onScrollObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('animated');
+        onScrollObserver.unobserve(entry.target);
+    });
+}, { rootMargin: '0px 0px -100px 0px' });
+
+animatableItems.forEach(item => onScrollObserver.observe(item));

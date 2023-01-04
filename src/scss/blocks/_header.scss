@@ -238,6 +238,23 @@
             &.active {
                 transform: none;
                 overflow-y: auto;
+
+                .menu__item {
+                    transform: none;
+                    opacity: 1;
+                }
+            }
+        }
+
+        &__item {
+            opacity: 0;
+            transform: translateX(-80%);
+
+            @for $i from 1 to 10 {
+                &:nth-child(#{$i}) {
+                    transition: transform .4s #{$i * 80ms},
+                    opacity .4s #{$i * 80ms};
+                }
             }
         }
 

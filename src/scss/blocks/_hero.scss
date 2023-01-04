@@ -26,6 +26,15 @@
         border: rem(1) solid $accent;
         text-align: center;
         padding: clamp(1.563rem, 1.108rem + 2.27vw, 2.813rem) clamp(0.625rem, -0.739rem + 6.82vw, 4.375rem);
+
+        &.animated {
+
+            .hero__title,
+            .hero__text {
+                transform: none;
+                opacity: 1;
+            }
+        }
     }
 
     &__title {
@@ -35,11 +44,19 @@
         letter-spacing: 0.05em;
         text-transform: uppercase;
         margin-bottom: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+
+        transform: translateY(100px);
+        opacity: 0;
+        transition: transform .8s .1s, opacity .8s .1s;
     }
 
     &__text {
         line-height: 1.5;
         font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+
+        transform: translateY(100px);
+        opacity: 0;
+        transition: transform .8s .2s, opacity .8s .2s;
     }
 }
 

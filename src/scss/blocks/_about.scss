@@ -34,10 +34,27 @@
         margin-bottom: rem(18);
     }
 
+    &__text {
+        transform: translateX(-100px);
+        opacity: 0;
+        transition: transform .8s, opacity .8s;
+
+        &.animated {
+            transform: none;
+            opacity: 1;
+        }
+    }
+
     &__cards {
         max-width: rem(600);
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+
+        &.animated {
+            .card-wrapper {
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -45,6 +62,14 @@
     width: rem(200);
     height: rem(160);
     perspective: rem(500);
+
+    opacity: 0;
+
+    @for $i from 0 to 5 {
+        &:nth-child(#{$i + 1}) {
+            transition: opacity .8s #{$i * 100ms},
+        }
+    }
 
     @media (any-hover: hover) {
         &:hover {

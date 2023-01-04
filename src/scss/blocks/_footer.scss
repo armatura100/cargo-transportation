@@ -2,6 +2,13 @@
 
 .footer {
     &__map {
+        opacity: 0;
+        transition: opacity 1s;
+
+        &.animated {
+            opacity: 1;
+        }
+
         iframe {
             width: 100%;
             height: rem(450);
